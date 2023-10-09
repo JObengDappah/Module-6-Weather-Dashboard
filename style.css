@@ -1,0 +1,106 @@
+/* Reset some default browser styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Global styles */
+  body {
+    background-color: #f0f0f0; /* Background color for the entire page */
+    color: #333; /* Text color */
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #3498db; /* Header background color */
+    color: #fff; /* Header text color */
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  /* Search form styles */
+  #search-form {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  #city-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  button[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #207ab2; /* Button background color on hover */
+  }
+  
+  /* Main content styles */
+  main {
+    padding: 1rem;
+  }
+  
+  /* Current Weather section styles */
+  #current-weather {
+    background-color: #fff; /* Background color for current weather section */
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  #city-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* 5-Day Forecast styles */
+  #forecast {
+    background-color: #fff; /* Background color for 5-day forecast section */
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .forecast-item {
+    margin: 1rem;
+  }
+  
+  /* Search History styles */
+  #search-history {
+    background-color: #fff; /* Background color for search history section */
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Styling for search history items */
+  .search-history-item {
+    cursor: pointer;
+    margin: 0.5rem 0;
+    padding: 0.25rem 0.5rem;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+  
+  .search-history-item:hover {
+    background-color: #ccc; /* Background color on hover */
+  }
+  
