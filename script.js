@@ -16,7 +16,8 @@ function fetchWeatherData(city) {
     .then((data) => {
       // Extract relevant data from the API response
       const cityName = data.name;
-      const date = new Date(data.dt * 1000); // Convert timestamp to date
+      const date = new Date(data.dt * 1000); 
+      // Convert timestamp to date
       const iconCode = data.weather[0].icon;
       const temperature = data.main.temp;
       const humidity = data.main.humidity;
@@ -38,40 +39,51 @@ function fetchWeatherData(city) {
     });
 
   // Fetch 5-day forecast data
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
-  fetch(forecastUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      // Extract relevant forecast data for the next 5 days
-      const forecastItems = data.list.slice(0, 5);
-
-      // Update the forecast section in the DOM
-      forecastSection.innerHTML = `
-        <h2>5-Day Forecast</h2>
-        ${forecastItems.map((item) => {
-          const forecastDate = new Date(item.dt * 1000);
-          const forecastIconCode = item.weather[0].icon;
-          const forecastTemperature = item.main.temp;
-          const forecastHumidity = item.main.humidity;
-          const forecastWindSpeed = item.wind.speed;
-
-          return `
-            <div class="forecast-item">
-              <div class="date">${forecastDate.toDateString()}</div>
-              <img class="weather-icon" src="https://openweathermap.org/img/wn/${forecastIconCode}.png" alt="Weather Icon">
-              <div class="temperature">${forecastTemperature}°C</div>
-              <div class="humidity">Humidity: ${forecastHumidity}%</div>
-              <div class="wind-speed">Wind Speed: ${forecastWindSpeed} m/s</div>
-            </div>
-          `;
-        }).join('')}
-      `;
-    })
-    .catch((error) => {
-      console.error('Error fetching 5-day forecast data:', error);
+fetch(forecastUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    // Extract relevant forecast data for the next 5 days
+    const forecastItems = {};
+    
+    data.list.forEach((item) => {
+      const forecastDate = new Date(item.dt * 1000);
+      const dateKey = forecastDate.toDateString();
+      
+      // Store the forecast data for each date
+      if (!forecastItems[dateKey]) {
+        forecastItems[dateKey] = {
+          date: forecastDate,
+          iconCode: item.weather[0].icon,
+          temperature: item.main.temp,
+          humidity: item.main.humidity,
+          windSpeed: item.wind.speed,
+        };
+      }
     });
+
+    // Update the forecast section in the DOM
+    forecastSection.innerHTML = `
+      <h2>5-Day Forecast</h2>
+      ${Object.values(forecastItems).map((forecastItem) => {
+        return `
+          <div class="forecast-item">
+            <div class="date">${forecastItem.date.toDateString()}</div>
+            <img class="weather-icon" src="https://openweathermap.org/img/wn/${forecastItem.iconCode}.png" alt="Weather Icon">
+            <div class="temperature">${forecastItem.temperature}°C</div>
+            <div class="humidity">Humidity: ${forecastItem.humidity}%</div>
+            <div class="wind-speed">Wind Speed: ${forecastItem.windSpeed} m/s</div>
+          </div>
+        `;
+      }).join('')}
+    `;
+  })
+  .catch((error) => {
+    console.error('Error fetching 5-day forecast data:', error);
+  });
 }
+
 
 // Function to handle form submission
 function handleFormSubmit(event) {

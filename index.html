@@ -5,77 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <br>
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-
-    <form id="search-form">
-        <label for="city-input"><h1>Search for a City:</h1></label>
-        <input type="text" id="city-input" placeholder="City">
-        <button type="submit">Search</button>
-    </form>
     
-    <main>
-        <section id="current-weather">
-            <h2>Current Weather</h2>
-            <div id="city-name"></div>
-            <div id="date"></div>
-            <img id="weather-icon" src="" alt="Weather Icon">
-            <div id="temperature"></div>
-            <div id="humidity"></div>
-            <div id="wind-speed"></div>
-        </section>
+    <main class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <section id="current-weather">
+                    <h2>Current Weather</h2>
+                    <div id="city-name"></div>
+                    <div id="date"></div>
+                    <img id="weather-icon" src="https://th.bing.com/th/id/OIP.YKvFSocKFQaoo-56XlWNMwHaHa?pid=ImgDet&w=180&h=180&c=7&dpr=1.3" alt="Weather Icon">
+                    <div id="temperature"></div>
+                    <div id="humidity"></div>
+                    <div id="wind-speed"></div>
+                </section>
+            </div>
+
+            <div class="col-lg-6">
+                <aside id="search-history">
+                    <form id="search-form">
+                        <label for="city-input"><h1>Search for a City:</h1></label>
+                        <input type="text" id="city-input" placeholder="City">
+                        <button type="submit">Search</button>
+                    </form>
+                    <button id="search-history-list" type="button" title="View search history"></button></button>
+                    <!-- List of cities from search history -->
+                    </button>
+              
+            </div>
+        </div>
 
         <section id="forecast">
             <h2>5-Day Forecast</h2>
-            <div class="forecast-item">
+            <!-- Repeat the below forecast-item structure for each day of the forecast -->
+            <div class="forecast-item col-lg-2">
                 <div class="date"></div>
-                <img class="weather-icon" src="" alt="Weather Icon">
+                <img class="weather-icon" src="https://th.bing.com/th/id/OIP.Td5i__ndNTJXclwFxSZuPwHaHa?pid=ImgDet&w=180&h=180&c=7&dpr=1.3" alt="Weather Icon">
                 <div class="temperature"></div>
                 <div class="humidity"></div>
                 <div class="wind-speed"></div>
             </div>
-            <div class="forecast-item">
-                <div class="date"></div>
-                <img class="weather-icon" src="" alt="Weather Icon">
-                <div class="temperature"></div>
-                <div class="humidity"></div>
-                <div class="wind-speed"></div>
-            </div>
-            <div class="forecast-item">
-                <div class="date"></div>
-                <img class="weather-icon" src="" alt="Weather Icon">
-                <div class="temperature"></div>
-                <div class="humidity"></div>
-                <div class="wind-speed"></div>
-            </div>
-            <div class="forecast-item">
-                <div class="date"></div>
-                <img class="weather-icon" src="" alt="Weather Icon">
-                <div class="temperature"></div>
-                <div class="humidity"></div>
-                <div class="wind-speed"></div>
-            </div>
-            <div class="forecast-item">
-                <div class="date"></div>
-                <img class="weather-icon" src="" alt="Weather Icon">
-                <div class="temperature"></div>
-                <div class="humidity"></div>
-                <div class="wind-speed"></div>
-            </div>
-            <!-- Repeat the above forecast-item structure for each day of the forecast -->
         </section>
     </main>
 
-    <aside id="search-history">
-                <button id="search-history-list" type="button" title="View search history"></button><h2>Search History</h2></button>
-                    <!-- List of cities from search history -->
-                </button>
-            </aside>
-
-        </section>
     <script src="script.js"></script>
 </body>
 </html>
